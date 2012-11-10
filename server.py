@@ -2,7 +2,9 @@ import socket
 import time
 import os
 
-ANY = "192.168.1.1"
+#ANY = "192.168.1.1"
+ANY = socket.gethostbyname(socket.gethostname())
+print ANY
 SENDERPORT = 1501
 MCAST_ADDR = "224.168.2.9"
 MCAST_PORT = 1600
