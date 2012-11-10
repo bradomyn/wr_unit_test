@@ -1,29 +1,26 @@
 import socket
 import time
+import os
+import subprocess
 
 ANY = "0.0.0.0"
 MCAST_ADDR = "224.168.2.9"
 MCAST_PORT = 1600
 
-def empty_tex():
+def empty(data):
     print "No action for this sms ID"
 
-def execute_tex():
-    print data
+def execute(data):
     print "We should execute sth here"
+    path=os.path.join(os.path.dirname(__file__),'test')
+    dir_list = os.listdir(path)
+
+    for fname in dir_list:
+        script = "./"+path+"/"+fname
+        print script
+        subprocess.call(script)
     
-# it will filter the packets and decides what to do
-# according to the msg id
-
-def msg_filter(msg_id):
-    filter= {  msg_id == '0x01': empty(), 
-            msg_id == '0x02': empty(),
-            msd_id == '0x03': empty(),
-            msd_id == '0x04': execute_tex(),
-          }[msg_id]
-
-    filter()
-
+    
 #create UDP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
 #allow multiple sockets to use the same PORT number
@@ -50,4 +47,14 @@ while 1:
         print "FROM: ", addr
         print "DATA: ", data
         print data[0:4]
-        msg_filter(data)
+
+        filter= { ('0x01') in data: empty, 
+                  ('0x02') in data: empty,
+                  ('0x03') in data: empty,
+                  ('0x04') in data: execute}[1]    
+
+# it will filter the packets and decides what to do
+# according to the msg id
+        filter(data)
+
+
