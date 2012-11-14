@@ -1,0 +1,11 @@
+# Networking Configuration
+MULTICAST yes
+TEST_ETH_INTERFACE 192.168.1.1
+PORT 1501
+MCAST_ADDR 224.168.2.9
+MCAST_PORT 1600
+
+# Folder Layout 
+TEST_CNF  cnf/
+TEST_BIN  bin/
+
