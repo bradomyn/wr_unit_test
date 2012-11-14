@@ -9,6 +9,8 @@ eggs
 parts
 bin
 var
+.swo
+.swp
 sdist
 develop-eggs
 .installed.cfg
