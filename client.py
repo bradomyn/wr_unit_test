@@ -57,4 +57,6 @@ while 1:
 # according to the msg id
         filter(data)
 
+        sock.sendto("ack",MCAST_ADDR)
+
 

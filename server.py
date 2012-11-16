@@ -35,4 +35,8 @@ while 1:
 #Any subscribers to the multicast address will receive this data
     sock.sendto("0x04_1_2_5_P_7", (MCAST_ADDR,MCAST_PORT) );
 
+    time.sleep(1)
+
+    data, addr = sock.recvfrom(1024)
+
 
